@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".FragmentProfile">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="270dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/header_rec"/>
+
+        <ImageView
+            android:layout_marginTop="140dp"
+            android:layout_marginStart="30dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/profile_pic"/>
+
+        <TextView
+            style="@style/headers_style_light"
+            android:text="@string/profile" />
+
+    </FrameLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/profile_name"
+        style="@style/editText"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="40dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/profile_name_et"
+            android:layout_width="260dp"
+            android:layout_height="55dp"
+            android:backgroundTint="@color/milky"
+            android:fontFamily="@font/sen_regular"
+            android:inputType="text"
+            android:text="@string/name"
+            android:textColor="@color/grey" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/profile_email"
+        style="@style/editText"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="10dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/profile_email_et"
+            android:layout_width="260dp"
+            android:layout_height="55dp"
+            android:backgroundTint="@color/milky"
+            android:fontFamily="@font/sen_regular"
+            android:inputType="text"
+            android:text="@string/email"
+            android:textColor="@color/grey" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/profile_password"
+        style="@style/editText"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="10dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/profile_password_et"
+            android:layout_width="260dp"
+            android:layout_height="55dp"
+            android:backgroundTint="@color/milky"
+            android:fontFamily="@font/sen_regular"
+            android:inputType="text|textPassword"
+            android:text="@string/password"
+            android:textColor="@color/grey" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/profile_password_repeat"
+        style="@style/editText"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="10dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/profile_password_repeat_et"
+            android:layout_width="260dp"
+            android:layout_height="55dp"
+            android:backgroundTint="@color/milky"
+            android:fontFamily="@font/sen_regular"
+            android:inputType="text|textPassword"
+            android:text="@string/password"
+            android:textColor="@color/grey" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="20dp"
+        android:layout_width="260dp"
+        android:text="@string/confirm"
+        style="@style/action_button_colored"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/quit_button"
+        android:layout_width="260dp"
+        android:text="@string/leave_account"
+        style="@style/action_button_colored"
+        android:backgroundTint="@color/chips_red"
+        android:layout_marginTop="30dp"
+        android:layout_marginStart="30dp"/>
+
+</LinearLayout>

@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".FragmentNewPost">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/new_post_background"
+        android:scaleType="fitXY"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            style="@style/headers_style_light"
+            android:text="@string/new_post"/>
+
+        <TextView
+            android:layout_height="wrap_content"
+            style="@style/headers_style_light"
+            android:textSize="20sp"
+            android:text="@string/new_post_subtitle"
+            android:layout_marginTop="15dp"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/auth_email"
+            style="@style/editText"
+            app:boxCornerRadiusBottomStart="30dp"
+            app:boxCornerRadiusBottomEnd="30dp"
+            app:boxCornerRadiusTopStart="30dp"
+            app:boxCornerRadiusTopEnd="30dp"
+            android:layout_marginTop="30dp"
+            android:layout_gravity="center_horizontal">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="320dp"
+                android:layout_height="70dp"
+                android:backgroundTint="@color/milky"
+                android:fontFamily="@font/sen_regular"
+                android:text="@string/email"
+                android:textColor="@color/grey" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/auth_password"
+            style="@style/editText"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            app:boxCornerRadiusBottomEnd="30dp"
+            app:boxCornerRadiusBottomStart="30dp"
+            app:boxCornerRadiusTopEnd="30dp"
+            app:boxCornerRadiusTopStart="30dp"
+            app:helperTextEnabled="false"
+            app:hintEnabled="false">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="320dp"
+                android:layout_height="300dp"
+                android:backgroundTint="@color/milky"
+                android:fontFamily="@font/sen_regular"
+                android:inputType="textMultiLine|text"
+                android:text="@string/password"
+                android:textColor="@color/grey" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="300dp"
+            android:layout_height="70dp"
+            android:layout_marginTop="20dp"
+            android:backgroundTint="#DA7B53"
+            app:cornerRadius="30dp"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/upload_image"
+            app:icon="@drawable/ic_upload"
+            app:iconGravity="end"
+            app:iconSize="35dp"/>
+
+        <com.google.android.material.button.MaterialButton
+            style="@style/action_button_colored"
+            android:layout_gravity="center_horizontal"
+            android:layout_width="150dp"
+            android:layout_height="65dp"
+            android:layout_marginTop="25dp"
+            android:backgroundTint="@color/chips_red"
+            app:strokeWidth="3dp"
+            android:text="create"
+            />
+    </LinearLayout>
+
+
+</FrameLayout>

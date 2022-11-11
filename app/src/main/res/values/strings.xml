@@ -1,0 +1,36 @@
+<resources>
+    <string name="app_name">MyApp</string>
+    <string name="login">Log in</string>
+    <string name="SignIn">Sign in</string>
+    <string name="confirm">confirm</string>
+    <string name="google">Sign in with Google</string>
+    <string name="question">DON\'T HAVE AN ACCOUNT?</string>
+    <string name="email">Email</string>
+    <string name="search">Search</string>
+    <string name="password">Password</string>
+    <string name="name">Name</string>
+    <string name="or">OR</string>
+    <string name="password_repeat">Repeat Password</string>
+    <string name="welcome">Welcome!</string>
+    <string name="welcome1">Let\'s get acquainted…</string>
+    <string name="home">Home</string>
+    <string name="home_subtitle">New posts, guides and feedbacks from our community are gathered here…</string>
+    <string name="shop">Shop</string>
+    <string name="profile">Profile</string>
+    <string name="cart">Cart</string>
+    <string name="add">Add post</string>
+    <string name="new_post">New post</string>
+    <string name="new_post_subtitle">Have something to share with the community?</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="upload_image">upload image</string>
+    <string name="post_author_text">Some post author</string>
+    <string name="post_date">Post date</string>
+    <string name="remember_me">Remember me</string>
+    <string name="leave_account">Leave account</string>
+    <string name="defProduct">Product1</string>
+    <string name="defProductPrice">Price1</string>
+    <string name="defProductDescription">Description1</string>
+</resources>

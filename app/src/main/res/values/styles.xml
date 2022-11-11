@@ -1,0 +1,135 @@
+<resources>
+
+    <style name="Widget.Theme.MyApp.ButtonBar.Fullscreen" parent="">
+        <item name="android:background">@color/black_overlay</item>
+        <item name="android:buttonBarStyle">?android:attr/buttonBarStyle</item>
+    </style>
+
+    // Стили для некоторых виджетов
+
+    <style name="back_button">
+        <item name="android:layout_height">55dp</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="fontFamily">@font/sen_regular</item>
+        <item name="android:text">back</item>
+        <item name="android:textColor">@color/milky</item>
+        <item name="android:backgroundTint">#00ffffff</item>
+    </style>
+
+    <style name="chips_style">
+        <item name="fontFamily">@font/sen_regular</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:textColor">@color/milky</item>
+        <item name="android:backgroundTint">@color/chips_red</item>
+    </style>
+
+    <style name="headers_style">
+        <item name="fontFamily">@font/sen_regular</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">300dp</item>
+        <item name="android:textColor">@color/pumpkin</item>
+        <item name="android:textSize">48sp</item>
+    </style>
+
+    <style name="headers_style_light">
+        <item name="android:layout_marginStart">35dp</item>
+        <item name="android:layout_marginTop">40dp</item>
+        <item name="fontFamily">@font/sen_regular</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">300dp</item>
+        <item name="android:textColor">@color/beige</item>
+        <item name="android:textSize">42sp</item>
+    </style>
+
+    <style name="signIn_with_google">
+        <item name="fontFamily">@font/sen_regular</item>
+        <item name="android:layout_height">60dp</item>
+        <item name="android:layout_width">300dp</item>
+        <item name="android:backgroundTint">@color/white</item>
+        <item name="cornerRadius">10dp</item>
+        <item name="android:textColor">@color/grey</item>
+    </style>
+
+    <style name="action_button">
+        <item name="android:layout_height">55dp</item>
+        <item name="android:layout_width">165dp</item>
+        <item name="cornerRadius">10dp</item>
+        <item name="android:backgroundTint">@color/milky</item>
+        <item name="android:textColor">@color/darker_brown</item>
+        <item name="fontFamily">@font/sen_regular</item>
+        <item name="strokeColor">#BF844810</item>
+        <item name="strokeWidth">1dp</item>
+    </style>
+
+    <style name="action_button_colored">
+        <item name="android:layout_height">60dp</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="cornerRadius">10dp</item>
+        <item name="android:backgroundTint">@color/pumpkin</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="fontFamily">@font/sen_regular</item>
+        <item name="strokeColor">@color/milky</item>
+        <item name="strokeWidth">1dp</item>
+    </style>
+
+    // Стили для оформления постов на главной странице
+
+    <style name="post_author_style">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">100dp</item>
+        <item name="android:layout_marginStart">45dp</item>
+        <item name="android:layout_marginTop">15dp</item>
+        <item name="fontFamily">@font/sen_regular</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="post_date_style">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">140dp</item>
+        <item name="android:layout_marginStart">40dp</item>
+        <item name="android:layout_marginEnd">0dp</item>
+        <item name="android:layout_marginTop">15dp</item>
+        <item name="fontFamily">@font/sen_regular</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    // Стили оформления полей ввода
+
+    <style name="editText">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="boxCornerRadiusBottomStart">10dp</item>
+        <item name="boxCornerRadiusTopStart">10dp</item>
+        <item name="boxCornerRadiusTopEnd">10dp</item>
+        <item name="boxCornerRadiusBottomEnd">10dp</item>
+        <item name="strokeColor">@color/beige</item>
+        <item name="boxStrokeColor">@color/beige</item>
+        <item name="boxStrokeWidth">2dp</item>
+        <item name="boxBackgroundMode">outline</item>
+        <item name="boxBackgroundColor">@color/milky</item>
+    </style>
+
+    <style name="product_text_style">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">150dp</item>
+        <item name="android:layout_marginTop">45dp</item>
+        <item name="android:layout_marginStart">45dp</item>
+        <item name="fontFamily">@font/sen_bold</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="product_price_style">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_marginTop">45dp</item>
+        <item name="android:layout_marginStart">45dp</item>
+        <item name="fontFamily">@font/sen_regular</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+</resources>

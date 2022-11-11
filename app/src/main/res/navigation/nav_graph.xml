@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/fragmentAuth">
+
+
+    <fragment
+        android:id="@+id/fragmentAuth"
+        android:name="com.example.myapp.FragmentAuth"
+        android:label="fragment_auth"
+        tools:layout="@layout/fragment_auth" >
+        <action
+            android:id="@+id/action_fragmentAuth_to_fragmentReg"
+            app:destination="@id/fragmentReg" />
+        <action
+            android:id="@+id/action_fragmentAuth_to_fragmentHome"
+            app:destination="@id/fragmentHome" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentReg"
+        android:name="com.example.myapp.FragmentReg"
+        android:label="fragment_reg"
+        tools:layout="@layout/fragment_reg" >
+        <action
+            android:id="@+id/action_fragmentReg_to_fragmentAuth"
+            app:destination="@id/fragmentAuth" />
+        <action
+            android:id="@+id/action_fragmentReg_to_fragmentHome"
+            app:destination="@id/fragmentHome" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentHome"
+        android:name="com.example.myapp.FragmentHome"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_fragmentHome_to_fragmentShop"
+            app:destination="@id/fragmentShop" />
+        <action
+            android:id="@+id/action_fragmentHome_to_fragmentCart"
+            app:destination="@id/fragmentCart" />
+        <action
+            android:id="@+id/action_fragmentHome_to_fragmentProfile"
+            app:destination="@id/fragmentProfile" />
+        <action
+            android:id="@+id/action_fragmentHome_to_fragmentNewPost"
+            app:destination="@id/fragmentNewPost" />
+        <action
+            android:id="@+id/action_fragmentHome_to_fragmentPost"
+            app:destination="@id/fragmentPost" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentShop"
+        android:name="com.example.myapp.FragmentShop"
+        android:label="fragment_shop"
+        tools:layout="@layout/fragment_shop" >
+        <action
+            android:id="@+id/action_fragmentShop_to_fragmentProduct"
+            app:destination="@id/fragmentProduct" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentCart"
+        android:name="com.example.myapp.FragmentCart"
+        android:label="fragment_cart"
+        tools:layout="@layout/fragment_cart" />
+    <fragment
+        android:id="@+id/fragmentProfile"
+        android:name="com.example.myapp.FragmentProfile"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" >
+        <action
+            android:id="@+id/action_fragmentProfile_to_fragmentAuth"
+            app:destination="@id/fragmentAuth" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentNewPost"
+        android:name="com.example.myapp.FragmentNewPost"
+        android:label="fragment_new_post"
+        tools:layout="@layout/fragment_new_post" />
+    <activity
+        android:id="@+id/splashActivity"
+        android:name="com.example.myapp.SplashActivity"
+        android:label="SplashActivity" />
+    <fragment
+        android:id="@+id/fragmentPost"
+        android:name="com.example.myapp.FragmentPost"
+        android:label="fragment_post"
+        tools:layout="@layout/fragment_post" >
+        <action
+            android:id="@+id/action_fragmentPost_to_fragmentHome"
+            app:destination="@id/fragmentHome" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentProduct"
+        android:name="com.example.myapp.FragmentProduct"
+        android:label="fragment_product"
+        tools:layout="@layout/fragment_product" />
+</navigation>

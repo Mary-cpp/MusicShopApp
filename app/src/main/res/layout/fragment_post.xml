@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".FragmentPost"
+    android:background="@color/chips_red">
+
+    <TextView
+        android:id="@+id/post_page_header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="PostHeader"
+        style="@style/headers_style_light"/>
+
+    <ImageView
+        android:id="@+id/post_page_image"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center_horizontal"
+        android:src="@drawable/photo"
+        android:scaleType="fitXY"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_marginTop="25dp"
+                android:id="@+id/post_page_text"
+                android:fontFamily="@font/sen_regular"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                android:layout_width="350dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_height="wrap_content"/>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginTop="15dp">
+
+                <TextView
+                    android:id="@+id/post_page_author"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/post_author_text"
+                    style="@style/post_author_style"/>
+
+                <TextView
+                    android:id="@+id/post_page_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/post_date"
+                    style="@style/post_author_style"/>
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</LinearLayout>

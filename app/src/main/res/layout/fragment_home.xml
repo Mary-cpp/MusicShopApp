@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".FragmentHome">
+
+        <TextView
+            android:id="@+id/title_home"
+            style="@style/headers_style"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="25dp"
+            android:text="@string/home"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/subtitle_home"
+            android:textSize="14sp"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/sen_regular"
+            android:text="@string/home_subtitle"
+            android:layout_gravity="center"
+            />
+
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/page_chips"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="12dp"
+            android:foregroundGravity="center">
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip_shop"
+                style="@style/chips_style"
+                android:text="@string/shop" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip_cart"
+                style="@style/chips_style"
+                android:text="@string/cart" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip_profile"
+                style="@style/chips_style"
+                android:text="@string/profile" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip_new_post"
+                style="@style/chips_style"
+                android:text="@string/add" />
+
+        </com.google.android.material.chip.ChipGroup>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/posts_list"
+            android:layout_width="370dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:layout_gravity="center"/>
+
+</LinearLayout>
