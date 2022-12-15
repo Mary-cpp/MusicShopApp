@@ -29,7 +29,7 @@
         <item name="fontFamily">@font/sen_regular</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_width">300dp</item>
-        <item name="android:textColor">@color/pumpkin</item>
+        <item name="android:textColor">@color/chips_red</item>
         <item name="android:textSize">48sp</item>
     </style>
 
