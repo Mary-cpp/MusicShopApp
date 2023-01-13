@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/headers_style"
+        android:textSize="38sp"
+        android:layout_marginStart="35dp"
+        android:layout_marginTop="40dp"
+        android:text="Commit the order"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/preorder_rv"
+        android:layout_marginTop="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_marginStart="30dp"
+        style="@style/headers_style"
+        android:text="Введите контактные данные"
+        android:textSize="32sp"/>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/preorder_adress"
+        style="@style/editText"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="40dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/adress_et"
+            android:layout_width="260dp"
+            android:layout_height="55dp"
+            android:backgroundTint="@color/milky"
+            android:fontFamily="@font/sen_regular"
+            android:text="Adress"
+            android:textColor="@color/grey" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/preorder_phone"
+        style="@style/editText"
+        android:layout_marginTop="25dp"
+        android:layout_marginStart="40dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/phone_et"
+            android:layout_width="260dp"
+            android:layout_height="55dp"
+            android:backgroundTint="@color/milky"
+            android:fontFamily="@font/sen_regular"
+            android:text="Phone number"
+            android:textColor="@color/grey" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:layout_width="100dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="15dp"
+        android:layout_gravity="bottom|end"
+        android:layout_marginEnd="50dp"
+        style="@style/action_button_colored"
+        android:backgroundTint="@color/chips_red"
+        app:strokeColor="@color/light_brown"
+        android:text="order"
+        android:fontFamily="@font/sen_regular"
+        app:strokeWidth="3dp"/>
+
+</LinearLayout>
