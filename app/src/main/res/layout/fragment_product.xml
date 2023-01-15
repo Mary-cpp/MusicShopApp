@@ -35,10 +35,10 @@
                 android:scaleType="fitXY"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintHorizontal_bias="0.497"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.188" />
+                app:layout_constraintVertical_bias="0.075" />
 
             <TextView
                 android:id="@+id/product_desc_text"
@@ -47,10 +47,10 @@
                 android:layout_gravity="center"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintHorizontal_bias="0.491"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/product_page_pic"
-                app:layout_constraintVertical_bias="0.268" />
+                app:layout_constraintVertical_bias="0.134" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/product_page_buy"
@@ -58,10 +58,10 @@
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="8dp"
                 android:text="Buy"
                 app:layout_constraintEnd_toEndOf="@+id/product_page_price"
-                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintHorizontal_bias="0.504"
                 app:layout_constraintStart_toStartOf="@+id/product_page_price"
                 app:layout_constraintTop_toBottomOf="@+id/product_page_price" />
 
@@ -71,11 +71,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginTop="40dp"
+                android:layout_marginTop="24dp"
                 android:text="@string/defProductPrice"
                 android:textColor="@color/darker_brown"
                 app:layout_constraintEnd_toEndOf="@+id/product_desc_text"
-                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintHorizontal_bias="0.477"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/product_desc_text" />
         </androidx.constraintlayout.widget.ConstraintLayout>
