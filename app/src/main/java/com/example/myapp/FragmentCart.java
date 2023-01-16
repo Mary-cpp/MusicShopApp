@@ -8,19 +8,30 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.firestore.SetOptions;
 
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Random;
 
 public class FragmentCart extends Fragment {
 
@@ -29,6 +40,10 @@ public class FragmentCart extends Fragment {
     ProductCartAdapter adapter;
 
     public CollectionReference cr;
+    long total = 0;
+    String details = "";
+
+    public CollectionReference cr2;
 
     FirebaseFirestore db = FirebaseFirestore.getInstance();
 
@@ -51,6 +66,7 @@ public class FragmentCart extends Fragment {
             String userId = sp.getString("userID", null);
 
             cr = db.collection("users").document(userId).collection("cart");
+            cr2 = db.collection("users").document(userId).collection("orders");
 
             RecyclerView rv = v.findViewById(R.id.cart_list);
 
@@ -75,6 +91,18 @@ public class FragmentCart extends Fragment {
                         .set(data, SetOptions.merge())
                         .addOnCompleteListener(task -> eventChangeListener());
             };
+
+            Button shop = v.findViewById(R.id.shop_button_cart);
+            // Слушатель кнопки "Купить"
+            shop.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Order order = getAndConvert();
+                    cr2.add(order.makeMap())
+                            .addOnSuccessListener(documentReference -> Toast.makeText(getContext(), "Order is finished", Toast.LENGTH_SHORT).show());
+                    Navigation.findNavController(v).navigate(R.id.action_fragmentCart_to_fragmentOrders);
+                }
+            });
 
             rv.setLayoutManager(new LinearLayoutManager(getContext()));
             adapter = new ProductCartAdapter(getContext(), mProducts, listener, deleteProductListener);
@@ -102,5 +130,40 @@ public class FragmentCart extends Fragment {
                     }
                     adapter.notifyDataSetChanged();
                 });
+    }
+
+    // Конвертация информации из Корзины в экземпляр класса "Заказ"
+    private Order getAndConvert(){
+        cr.get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()){
+                            for (QueryDocumentSnapshot document : task.getResult()){
+                                Log.d("FIREBASE", document.getId() + "=>" + document.getData());
+                                details += document.getString("name");
+                                details += "\n";
+                                total += document.getLong("price");
+                            }
+                        }
+                        else {
+                            Log.w("FIREBASE", "Error getting documents.", task.getException());
+                        }
+                    }
+                });
+        return new Order(randString(), details, total);
+    }
+
+    // Генерация случайной строки для номера заказа
+    public String randString() {
+        return String.valueOf(Math.random()*9000000+1000000);
+    }
+
+    // преобразование экземпляра класса в Bundle для передачи в Intent
+    private Bundle orderToBundle(Order order){
+        Bundle bundle = new Bundle();
+        // Передаем экземпляр класса
+        bundle.putParcelable("order", order);
+        return bundle;
     }
 }

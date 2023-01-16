@@ -54,6 +54,11 @@
                 android:text="@string/profile" />
 
             <com.google.android.material.chip.Chip
+                android:id="@+id/chip_orders"
+                style="@style/chips_style"
+                android:text="@string/orders" />
+
+            <com.google.android.material.chip.Chip
                 android:id="@+id/chip_new_post"
                 style="@style/chips_style"
                 android:text="@string/add" />

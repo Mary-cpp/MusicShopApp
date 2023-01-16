@@ -65,6 +65,16 @@ public class FragmentHome extends Fragment {
                 .findNavController(v14)
                 .navigate(R.id.action_fragmentHome_to_fragmentCart));
 
+        Chip chipOrders = v.findViewById(R.id.chip_orders);
+        chipOrders.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Navigation
+                        .findNavController(view)
+                        .navigate(R.id.action_fragmentHome_to_fragmentOrders);
+            }
+        });
+
         RecyclerView rv = v.findViewById(R.id.posts_list);
 
         PostAdapter.OnPostClickListener postClickListener = position -> {

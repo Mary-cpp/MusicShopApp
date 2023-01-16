@@ -29,7 +29,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.MyViewHolder> 
         this.mOnPostClickListener = onPostClickListener;
     }
 
-    public class MyViewHolder extends RecyclerView.ViewHolder{
+    public static class MyViewHolder extends RecyclerView.ViewHolder{
 
         private final TextView postName, postText, postDate, postAuthor;
 

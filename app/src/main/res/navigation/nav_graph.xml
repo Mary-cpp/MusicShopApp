@@ -50,6 +50,9 @@
         <action
             android:id="@+id/action_fragmentHome_to_fragmentPost"
             app:destination="@id/fragmentPost" />
+        <action
+            android:id="@+id/action_fragmentHome_to_fragmentOrders"
+            app:destination="@id/fragmentOrders" />
     </fragment>
     <fragment
         android:id="@+id/fragmentShop"
@@ -64,7 +67,11 @@
         android:id="@+id/fragmentCart"
         android:name="com.example.myapp.FragmentCart"
         android:label="fragment_cart"
-        tools:layout="@layout/fragment_cart" />
+        tools:layout="@layout/fragment_cart" >
+        <action
+            android:id="@+id/action_fragmentCart_to_fragmentOrders"
+            app:destination="@id/fragmentOrders" />
+    </fragment>
     <fragment
         android:id="@+id/fragmentProfile"
         android:name="com.example.myapp.FragmentProfile"
@@ -97,4 +104,9 @@
         android:name="com.example.myapp.FragmentProduct"
         android:label="fragment_product"
         tools:layout="@layout/fragment_product" />
+    <fragment
+        android:id="@+id/fragmentOrders"
+        android:name="com.example.myapp.FragmentOrders"
+        android:label="fragment_order"
+        tools:layout="@layout/fragment_order" />
 </navigation>

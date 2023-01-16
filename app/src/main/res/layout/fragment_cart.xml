@@ -12,6 +12,7 @@
         android:layout_height="wrap_content">
 
         <com.google.android.material.button.MaterialButton
+            android:id="@+id/shop_button_cart"
         style="@style/action_button_colored"
         android:layout_width="150dp"
         android:layout_height="65dp"
