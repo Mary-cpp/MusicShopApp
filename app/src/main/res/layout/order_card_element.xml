@@ -2,7 +2,6 @@
 <androidx.cardview.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="150dp">
 
@@ -15,9 +14,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/sen_bold"
-            android:inputType="textNoSuggestions|textCapCharacters"
             android:text="Order number:"
-            android:textSize="18dp"
+            android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.053"
@@ -31,9 +29,8 @@
             android:layout_height="79dp"
             android:layout_marginTop="12dp"
             android:fontFamily="@font/sen_bold"
-            android:inputType="textLongMessage|textMultiLine"
             android:text="Order details"
-            android:textSize="18dp"
+            android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/order_number_text"
@@ -46,7 +43,7 @@
             android:layout_marginTop="20dp"
             android:fontFamily="@font/sen_bold"
             android:text="Total price"
-            android:textSize="18dp"
+            android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.633"

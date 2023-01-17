@@ -53,6 +53,7 @@ public class FragmentShop extends Fragment {
         View v = inflater.inflate(R.layout.fragment_shop, container, false);
 
             SharedPreferences sp =  this.requireActivity().getSharedPreferences("MyPrefs", MODE_PRIVATE);
+            String userId = sp.getString("userID", null);
 
             mProducts = new ArrayList<>();
 
@@ -91,20 +92,30 @@ public class FragmentShop extends Fragment {
             RecyclerView rv = v.findViewById(R.id.products_list);
             rv.setLayoutManager(new LinearLayoutManager(context));
 
+            // Кнопка "Понравилось"
+            ProductAdapter.OnProductLikeListener productLikeListener = (position, likeTag) -> {
+                CollectionReference userRef = db.collection("users").document(userId).collection("liked");
+                if(!likeTag.equals("fill")){
+                    userRef
+                            .add(mProducts.get(position).makeMap())
+                            .addOnSuccessListener(documentReference -> Toast.makeText(getContext(), "Товар добавлен в Избранные", Toast.LENGTH_SHORT).show());
+                    eventChangeListener();
+                }
+            };
+
             // Нажатие на элемент RecyclerView
             ProductAdapter.OnProductClickListener productClickListener = (position) ->
                     Navigation.findNavController(v).navigate(R.id.action_fragmentShop_to_fragmentProduct, productToBundle(mProducts.get(position)));
 
             // Кнопка "Купить"
             ProductAdapter.OnProductBuyListener productBuyListener = position -> {
-                String userId = sp.getString("userID", null);
                 CollectionReference userRef = db.collection("users").document(userId).collection("cart");
                 userRef
                         .add(mProducts.get(position).makeMap())
                         .addOnSuccessListener(documentReference -> Toast.makeText(getContext(), "Product was added to the cart!", Toast.LENGTH_SHORT).show());
             };
 
-            adapter = new ProductAdapter(context, mProducts, productClickListener, productBuyListener);
+            adapter = new ProductAdapter(context, mProducts, productClickListener, productBuyListener, productLikeListener);
             rv.setAdapter(adapter);
 
             eventChangeListener();

@@ -13,7 +13,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.button.MaterialButton;
-import com.google.firebase.firestore.FirebaseFirestore;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -23,6 +22,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.MyViewHo
     private final Context context ;
     private final ArrayList<Product> mProducts;
     private final OnProductClickListener mOnProductClickListener;
+    private final OnProductLikeListener mOnProductLike;
     private final OnProductBuyListener mOnProductBuyListener;
 
     public interface OnProductClickListener{
@@ -33,19 +33,24 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.MyViewHo
         void onProductBuy(int position);
     }
 
-    public ProductAdapter(Context context, ArrayList<Product> products, OnProductClickListener onProductClickListener, OnProductBuyListener onProductBuyListener) {
+    public interface OnProductLikeListener{
+        void onProductLike(int position, String likeTag);
+    }
+
+    public ProductAdapter(Context context, ArrayList<Product> products, OnProductClickListener onProductClickListener, OnProductBuyListener onProductBuyListener, OnProductLikeListener onProductLikeListener) {
         this.context = context;
         mProducts = products;
         this.mOnProductClickListener = onProductClickListener;
         this.mOnProductBuyListener = onProductBuyListener;
+        this.mOnProductLike = onProductLikeListener;
     }
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
 
         private final TextView productName, productPrice;
         private final ImageView productPic;
-        private ImageButton like;
-        private MaterialButton buy;
+        private final ImageButton like;
+        private final MaterialButton buy;
 
         public MyViewHolder(View itemView) {
             super(itemView);
@@ -71,7 +76,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.MyViewHo
 
         Product product = mProducts.get(position);
         holder.productName.setText(product.getName());
-        holder.productPrice.setText("" + product.getPrice());
+        holder.productPrice.setText(String.valueOf(product.getPrice()));
         Picasso.with(holder.productPic.getContext())
                 .load(product.getPic())
                 .placeholder(R.drawable.photo)
@@ -79,7 +84,10 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.MyViewHo
                 .into(holder.productPic);
 
         holder.itemView.setOnClickListener(view -> mOnProductClickListener.onProductClick(position));
-
+        holder.like.setOnClickListener(view -> {
+            changeHeart(holder.like);
+            mOnProductLike.onProductLike(position, ":)");
+        });
         holder.buy.setOnClickListener(view -> mOnProductBuyListener.onProductBuy(position));
 
     }
@@ -89,5 +97,14 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.MyViewHo
         return mProducts.size();
     }
 
-
+    public String changeHeart(ImageButton ib1){
+        if(ib1.getTag() != null && ib1.getTag().toString().equals("no fill")){
+            ib1.setImageResource(R.drawable.favorite_fill);
+            ib1.setTag("fill");
+        } else {
+            ib1.setImageResource(R.drawable.favorite);
+            ib1.setTag("no fill");
+        }
+        return ib1.getTag().toString();
+    }
 }

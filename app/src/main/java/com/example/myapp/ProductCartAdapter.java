@@ -19,8 +19,6 @@ import java.util.ArrayList;
 
 public class ProductCartAdapter extends RecyclerView.Adapter<ProductCartAdapter.MyViewHolder>{
 
-    FirebaseFirestore db = FirebaseFirestore.getInstance();
-
     public interface OnDeleteProductListener{
         void onProductDelete(int position);
     }

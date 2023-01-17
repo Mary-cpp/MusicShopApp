@@ -52,7 +52,7 @@
             android:layout_height="55dp"
             android:backgroundTint="#00FFFFFF"
             android:scaleType="fitXY"
-            android:src="@drawable/like"
+            android:src="@drawable/favorite"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.925"
