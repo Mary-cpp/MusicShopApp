@@ -87,10 +87,11 @@ public class FragmentAuth extends Fragment {
                                 }
                             }
                             else {
-                                Log.w("FIREBASE", "Error getting documents.", task.getException());
+                                Toast.makeText(getContext(), "Неверно введен логин или пароль", Toast.LENGTH_SHORT).show();
                             }
                         })
-                        .addOnFailureListener(e -> Toast.makeText(getContext(), "Неверно введен логин или пароль", Toast.LENGTH_SHORT).show());
+                        .addOnFailureListener(e -> Log.w("FIREBASE", "Error getting documents."));
+
             });
         return v;
     }

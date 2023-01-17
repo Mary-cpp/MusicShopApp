@@ -84,12 +84,22 @@ public class FragmentCart extends Fragment {
 
             // Слушатель нажатия на кнопки "+" и "-"
             ProductCartAdapter.OnProductAddListener listener = (position, value) -> {
-                HashMap <String, Long> data = new HashMap<>();
-                data.put("value", mProducts.get(position).getValue()+value);
-                cr
-                        .document(mIndexes.get(position))
-                        .set(data, SetOptions.merge())
-                        .addOnCompleteListener(task -> eventChangeListener());
+                if (mProducts.get(position).getValue() < 1){       // Удаляем товар, если количество меньше одного
+                    cr.document(mIndexes.get(position))
+                            .delete()
+                            .addOnCompleteListener(task -> {
+                                eventChangeListener();
+                                Toast.makeText(getContext(), "Product deleted!", Toast.LENGTH_SHORT).show();
+                            });
+                }
+                else{
+                    HashMap <String, Long> data = new HashMap<>();
+                    data.put("value", mProducts.get(position).getValue()+value);
+                    cr
+                            .document(mIndexes.get(position))
+                            .set(data, SetOptions.merge())
+                            .addOnCompleteListener(task -> eventChangeListener());
+                }
             };
 
             Button shop = v.findViewById(R.id.shop_button_cart);
@@ -134,21 +144,20 @@ public class FragmentCart extends Fragment {
 
     // Конвертация информации из Корзины в экземпляр класса "Заказ"
     private Order getAndConvert(){
+        details = "";
+        total = 0;
         cr.get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        if (task.isSuccessful()){
-                            for (QueryDocumentSnapshot document : task.getResult()){
-                                Log.d("FIREBASE", document.getId() + "=>" + document.getData());
-                                details += document.getString("name");
-                                details += "\n";
-                                total += document.getLong("price");
-                            }
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful()){
+                        for (QueryDocumentSnapshot document : task.getResult()){
+                            Log.d("FIREBASE", document.getId() + "=>" + document.getData());
+                            details += document.getString("name");
+                            details += "\n";
+                            total += document.getLong("price");
                         }
-                        else {
-                            Log.w("FIREBASE", "Error getting documents.", task.getException());
-                        }
+                    }
+                    else {
+                        Log.w("FIREBASE", "Error getting documents.", task.getException());
                     }
                 });
         return new Order(randString(), details, total);
@@ -157,13 +166,5 @@ public class FragmentCart extends Fragment {
     // Генерация случайной строки для номера заказа
     public String randString() {
         return String.valueOf(Math.random()*9000000+1000000);
-    }
-
-    // преобразование экземпляра класса в Bundle для передачи в Intent
-    private Bundle orderToBundle(Order order){
-        Bundle bundle = new Bundle();
-        // Передаем экземпляр класса
-        bundle.putParcelable("order", order);
-        return bundle;
     }
 }
