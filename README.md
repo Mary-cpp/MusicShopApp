@@ -17,7 +17,6 @@
 Используемые технологии:
 - Java
 - Android SDK
-- Material Design Components
 - Firebase (Firebase Firestore)
 - Figma (дизайн) - https://www.figma.com/file/hph3YwfvrsGdo1uWtm7qa2/MusicShop?t=FDeS85NOw4APXmzl-1
 
@@ -25,3 +24,4 @@
 - AndroidX (Navigation)
 - Picasso (да, изображениям кое-где плохо...)
 - Firebase Libraries
+- Material Design Components
