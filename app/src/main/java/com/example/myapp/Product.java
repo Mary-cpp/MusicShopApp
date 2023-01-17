@@ -8,7 +8,7 @@ import java.util.HashMap;
 public class Product implements Parcelable {
 
     private String name, pic, description;
-    private long price, value;
+    private long price, value, like;
 
     public Product() {
     }
@@ -46,6 +46,14 @@ public class Product implements Parcelable {
         productToCart.put("price", price);
         productToCart.put("value", 1);
         return productToCart;
+    }
+
+    public long getLike() {
+        return like;
+    }
+
+    public void setLike(long like) {
+        this.like = like;
     }
 
     public long getValue() {

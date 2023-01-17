@@ -83,13 +83,18 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.MyViewHo
                 .error(R.drawable.photo)
                 .into(holder.productPic);
 
-        holder.itemView.setOnClickListener(view -> mOnProductClickListener.onProductClick(position));
-        holder.like.setOnClickListener(view -> {
-            changeHeart(holder.like);
-            mOnProductLike.onProductLike(position, ":)");
-        });
-        holder.buy.setOnClickListener(view -> mOnProductBuyListener.onProductBuy(position));
+        if (product.getLike()!=1){
+            holder.like.setImageResource(R.drawable.favorite);
+            holder.like.setTag("no fill");
+        }
+        else{
+            holder.like.setImageResource(R.drawable.favorite_fill);
+            holder.like.setTag("fill");
+        }
 
+        holder.itemView.setOnClickListener(view -> mOnProductClickListener.onProductClick(position));
+        holder.like.setOnClickListener(view -> mOnProductLike.onProductLike(position, changeHeart(holder.like)));
+        holder.buy.setOnClickListener(view -> mOnProductBuyListener.onProductBuy(position));
     }
 
     @Override
