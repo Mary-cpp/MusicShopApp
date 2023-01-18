@@ -152,7 +152,7 @@ public class FragmentCart extends Fragment {
                     mOrders.clear();
                     for (QueryDocumentSnapshot doc : queryDocumentSnapshots){
                         Log.d(TAG_READ, doc.getId() + "=>" + doc.getData());
-                        details += doc.getString("name") + "; ";
+                        details += doc.getString("name") + ";\n";
                         total += doc.getLong("price");
                     }
                     Log.d("FIRESTORE READ 2", details + total);
