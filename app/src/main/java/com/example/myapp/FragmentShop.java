@@ -90,6 +90,11 @@ public class FragmentShop extends Fragment {
     }
 
     @Override
+    public void onDetach() {
+        super.onDetach();
+    }
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
@@ -168,12 +173,7 @@ public class FragmentShop extends Fragment {
             EditText searchEt = v.findViewById(R.id.search_product_et);
             searchEt.setText("");
             ImageButton search = v.findViewById(R.id.search_button);
-            search.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    searchProduct(searchEt.getText().toString());
-                }
-            });
+            search.setOnClickListener(view -> searchProduct(searchEt.getText().toString()));
 
             adapter = new ProductAdapter(context, mProducts, productClickListener, productBuyListener, productLikeListener);
             rv.setAdapter(adapter);
@@ -259,7 +259,6 @@ public class FragmentShop extends Fragment {
     private void searchProduct(String searchWord){
         CollectionReference crp = db.collection("products");
         if(!searchWord.equals("")){
-            String[] searchWors = searchWord.split(" ");
             mProducts.clear();
             mIndexes.clear();
             crp

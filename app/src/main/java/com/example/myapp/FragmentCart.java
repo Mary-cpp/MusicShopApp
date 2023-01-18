@@ -2,7 +2,6 @@ package com.example.myapp;
 
 import static android.content.Context.MODE_PRIVATE;
 
-import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
@@ -13,31 +12,22 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.CollectionReference;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.firestore.SetOptions;
 
-import java.nio.charset.Charset;
-import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
-import java.util.Random;
 
 public class FragmentCart extends Fragment {
 
@@ -50,10 +40,11 @@ public class FragmentCart extends Fragment {
     ArrayList<String> mIndexes;
     ProductCartAdapter adapter;
 
+    ArrayList<Order> mOrders;
+
     public CollectionReference cr;
     long total;
     String details;
-    Order order;
     String userId;
 
     public CollectionReference cr2;
@@ -78,8 +69,6 @@ public class FragmentCart extends Fragment {
 
             userId = sp.getString("userID", null);
 
-            Context context = getContext();
-
             cr = db.collection("users").document(userId).collection("cart");
             cr2 = db.collection("users").document(userId).collection("orders");
 
@@ -87,6 +76,7 @@ public class FragmentCart extends Fragment {
 
             mProducts = new ArrayList<>();
             mIndexes = new ArrayList<>();
+            mOrders = new ArrayList<>();
 
             // Слушатель нажатия на кнопку "Удалить"
             ProductCartAdapter.OnDeleteProductListener deleteProductListener = position
@@ -117,17 +107,11 @@ public class FragmentCart extends Fragment {
                 }
             };
 
-            Button shop = v.findViewById(R.id.shop_button_cart);
             // Слушатель кнопки "Купить"
-            shop.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    getAndConvert();
-                    cr2.add(order.makeMap())
-                            .addOnSuccessListener(documentReference -> Toast.makeText(getContext(), "Order is finished", Toast.LENGTH_SHORT).show())
-                            .addOnFailureListener(e -> Log.e(TAG_ERROR, e.getMessage()));
-                    Navigation.findNavController(v).navigate(R.id.action_fragmentCart_to_fragmentOrders);
-                }
+            Button shop = v.findViewById(R.id.shop_button_cart);
+            shop.setOnClickListener(view -> {
+                getAndConvert(v);
+                deleteCartProducts();
             });
 
             rv.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -159,31 +143,47 @@ public class FragmentCart extends Fragment {
     }
 
     // Конвертация информации из Корзины в экземпляр класса "Заказ"
-    public void getAndConvert(){
+    public void getAndConvert(View v){
         details = "";
         total = 0L;
-        order = new Order();
         db.collection("users").document(userId).collection("cart")
-                .addSnapshotListener((value, error) -> {
-
-                    if(error!=null){
-                        Log.e("FIREBASE ERROR", error.getMessage());
-                    }
-                    assert value != null;
-                    for (QueryDocumentSnapshot doc : value){
-                        Log.d("FIREBASE", doc.getId() + "=>" + doc.getData());
-                        details += doc.getString("name");
+                .get()
+                .addOnSuccessListener(queryDocumentSnapshots -> {
+                    mOrders.clear();
+                    for (QueryDocumentSnapshot doc : queryDocumentSnapshots){
+                        Log.d(TAG_READ, doc.getId() + "=>" + doc.getData());
+                        details += doc.getString("name") + "; ";
                         total += doc.getLong("price");
-                        order = new Order(randString(), details, total);
                     }
-                    Log.d("FIRESTORE READ", details + total);
+                    Log.d("FIRESTORE READ 2", details + total);
+                    mOrders.add(new Order(randString(), details, total));
+                    Log.d("FIRESTORE READ 3", "Repeat: " + mOrders.get(0).getDetails() + mOrders.get(0).getNumber() + mOrders.get(0).getPrice());
 
-                    Log.d("FIRESTORE READ", order.getDetails() + order.getNumber() + order.getPrice());
+                    try{
+                        cr2.add(mOrders.get(0).makeMap())
+                                .addOnSuccessListener(documentReference -> Toast.makeText(getContext(), "Order is finished", Toast.LENGTH_SHORT).show())
+                                .addOnFailureListener(e -> Log.e(TAG_ERROR, e.getMessage()));
+                        Navigation.findNavController(v).navigate(R.id.action_fragmentCart_to_fragmentOrders);
+                    }
+                    catch (IndexOutOfBoundsException e){
+                        Log.e(TAG_ERROR, e.getMessage());
+                    }
+                })
+                .addOnFailureListener(e -> Log.e("FIREBASE ERROR", e.getMessage()));
+    }
+
+    public void deleteCartProducts(){
+        cr.get()
+                .addOnSuccessListener(queryDocumentSnapshots -> {
+                    for (QueryDocumentSnapshot doc : queryDocumentSnapshots){
+                        cr.document(doc.getId()).delete().addOnCompleteListener(task -> Log.d(TAG_UPDATE, "Product cart is emptied"));
+                    }
                 });
     }
 
     // Генерация случайной строки для номера заказа
     public String randString() {
-        return String.valueOf(Math.random()*9000000+1000000);
+        String result = String.valueOf(Math.random()*9000000+1000000);
+        return result + " ";
     }
 }
