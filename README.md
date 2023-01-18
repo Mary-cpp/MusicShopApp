@@ -27,5 +27,11 @@
 - Material Design Components
 
 
- file:///home/mary/%D0%97%D0%B0%D0%B3%D1%80%D1%83%D0%B7%D0%BA%D0%B8/photo_2023-01-19_00-31-05.jpg
- 
+| Фрагмент      | Скриншот          |
+| ------------- |:------------------:|
+| Регистрация   | ![alt-текст]file:///home/mary/%D0%97%D0%B0%D0%B3%D1%80%D1%83%D0%B7%D0%BA%D0%B8/photo_2023-01-19_00-31-12.jpg |
+| Авторизация   | ![alt-текст]file:///home/mary/%D0%97%D0%B0%D0%B3%D1%80%D1%83%D0%B7%D0%BA%D0%B8/photo_2023-01-19_00-31-09.jpg |
+| Магазин       | ![alt-текст]file:///home/mary/%D0%97%D0%B0%D0%B3%D1%80%D1%83%D0%B7%D0%BA%D0%B8/photo_2023-01-19_00-31-20.jpg |
+| Дом. страница | ![alt-текст]![photo_2023-01-19_00-31-25](https://user-images.githubusercontent.com/79060702/213303891-c0a79641-c400-4e8b-bae2-f8060718aeef.jpg)|
+| Заказы        | ![alt-текст] file:///home/mary/%D0%97%D0%B0%D0%B3%D1%80%D1%83%D0%B7%D0%BA%D0%B8/photo_2023-01-19_00-31-27.jpg|
+| Корзина       | ![alt-текст] file:///home/mary/%D0%97%D0%B0%D0%B3%D1%80%D1%83%D0%B7%D0%BA%D0%B8/photo_2023-01-19_00-31-34.jpg|
