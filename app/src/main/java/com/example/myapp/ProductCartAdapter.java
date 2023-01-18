@@ -43,7 +43,7 @@ public class ProductCartAdapter extends RecyclerView.Adapter<ProductCartAdapter.
 
         private final TextView productName, productPrice, quantity;
         private final ImageView productPic;
-        private final ImageButton like, delete, minus, plus;
+        private final ImageButton delete, minus, plus;
 
         public MyViewHolder(View itemView) {
             super(itemView);
@@ -52,7 +52,6 @@ public class ProductCartAdapter extends RecyclerView.Adapter<ProductCartAdapter.
             productName = itemView.findViewById(R.id.product_cart_name);
             productPic = itemView.findViewById(R.id.product_cart_pic);
             productPrice = itemView.findViewById(R.id.product_cart_price);
-            like = itemView.findViewById(R.id.cart_like_button);
             delete = itemView.findViewById(R.id.cart_delete_button);
             plus = itemView.findViewById(R.id.plus_button);
             minus = itemView.findViewById(R.id.minus_button);
@@ -82,26 +81,11 @@ public class ProductCartAdapter extends RecyclerView.Adapter<ProductCartAdapter.
                 .error(R.drawable.photo)
                 .into(holder.productPic);
 
-        holder.plus.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                mOnProductAddListener.onProductAdd(position, 1);
-            }
-        });
+        holder.plus.setOnClickListener(view -> mOnProductAddListener.onProductAdd(position, 1));
 
-        holder.minus.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                mOnProductAddListener.onProductAdd(position, -1);
-            }
-        });
+        holder.minus.setOnClickListener(view -> mOnProductAddListener.onProductAdd(position, -1));
 
-        holder.delete.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                mOnDeleteProductListener.onProductDelete(position);
-            }
-        });
+        holder.delete.setOnClickListener(view -> mOnDeleteProductListener.onProductDelete(position));
     }
 
     @Override
