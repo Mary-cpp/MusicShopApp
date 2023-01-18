@@ -4,6 +4,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 import java.util.HashMap;
+import java.util.List;
 
 public class Order implements Parcelable{
 
@@ -12,6 +13,9 @@ public class Order implements Parcelable{
     private long price;
 
     public Order() {
+        this.number = "0";
+        this.details = "0";
+        this.price = 0L;
     }
 
     public Order(String number, String details, long price) {

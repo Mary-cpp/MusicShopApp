@@ -2,6 +2,7 @@ package com.example.myapp;
 
 import static android.content.Context.MODE_PRIVATE;
 
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
@@ -12,17 +13,21 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.firestore.SetOptions;
@@ -31,17 +36,25 @@ import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Random;
 
 public class FragmentCart extends Fragment {
+
+    private static final String TAG_UPDATE = "FIRESTORE UPDATES";
+    private static final String TAG_READ = "FIRESTORE READS";
+    private static final String TAG_WRITE = "FIRESTORE WRITES";
+    private static final String TAG_ERROR = "FIRESTORE ERROR";
 
     ArrayList<Product> mProducts;
     ArrayList<String> mIndexes;
     ProductCartAdapter adapter;
 
     public CollectionReference cr;
-    long total = 0;
-    String details = "";
+    long total;
+    String details;
+    Order order;
+    String userId;
 
     public CollectionReference cr2;
 
@@ -63,7 +76,9 @@ public class FragmentCart extends Fragment {
         try {
             SharedPreferences sp =  this.requireActivity().getSharedPreferences("MyPrefs", MODE_PRIVATE);
 
-            String userId = sp.getString("userID", null);
+            userId = sp.getString("userID", null);
+
+            Context context = getContext();
 
             cr = db.collection("users").document(userId).collection("cart");
             cr2 = db.collection("users").document(userId).collection("orders");
@@ -107,9 +122,10 @@ public class FragmentCart extends Fragment {
             shop.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Order order = getAndConvert();
+                    getAndConvert();
                     cr2.add(order.makeMap())
-                            .addOnSuccessListener(documentReference -> Toast.makeText(getContext(), "Order is finished", Toast.LENGTH_SHORT).show());
+                            .addOnSuccessListener(documentReference -> Toast.makeText(getContext(), "Order is finished", Toast.LENGTH_SHORT).show())
+                            .addOnFailureListener(e -> Log.e(TAG_ERROR, e.getMessage()));
                     Navigation.findNavController(v).navigate(R.id.action_fragmentCart_to_fragmentOrders);
                 }
             });
@@ -127,40 +143,43 @@ public class FragmentCart extends Fragment {
 
     private void eventChangeListener() {
        cr
-                .addSnapshotListener((value, error) -> {
-                    mProducts.clear();
-                    mIndexes.clear();
-                    if(error!=null){
-                        Log.e("FIREBASE ERROR", error.getMessage());
-                    }
-                    assert value!=null;
-                    for (QueryDocumentSnapshot doc : value){
-                        mProducts.add(doc.toObject(Product.class));
-                        mIndexes.add(doc.getId());
-                    }
-                    adapter.notifyDataSetChanged();
-                });
+            .addSnapshotListener((value, error) -> {
+                mProducts.clear();
+                mIndexes.clear();
+                if(error!=null){
+                    Log.e("FIREBASE ERROR", error.getMessage());
+                }
+                assert value!=null;
+                for (QueryDocumentSnapshot doc : value){
+                    mProducts.add(doc.toObject(Product.class));
+                    mIndexes.add(doc.getId());
+                }
+                adapter.notifyDataSetChanged();
+            });
     }
 
     // Конвертация информации из Корзины в экземпляр класса "Заказ"
-    private Order getAndConvert(){
+    public void getAndConvert(){
         details = "";
-        total = 0;
-        cr.get()
-                .addOnCompleteListener(task -> {
-                    if (task.isSuccessful()){
-                        for (QueryDocumentSnapshot document : task.getResult()){
-                            Log.d("FIREBASE", document.getId() + "=>" + document.getData());
-                            details += document.getString("name");
-                            details += "\n";
-                            total += document.getLong("price");
-                        }
+        total = 0L;
+        order = new Order();
+        db.collection("users").document(userId).collection("cart")
+                .addSnapshotListener((value, error) -> {
+
+                    if(error!=null){
+                        Log.e("FIREBASE ERROR", error.getMessage());
                     }
-                    else {
-                        Log.w("FIREBASE", "Error getting documents.", task.getException());
+                    assert value != null;
+                    for (QueryDocumentSnapshot doc : value){
+                        Log.d("FIREBASE", doc.getId() + "=>" + doc.getData());
+                        details += doc.getString("name");
+                        total += doc.getLong("price");
+                        order = new Order(randString(), details, total);
                     }
+                    Log.d("FIRESTORE READ", details + total);
+
+                    Log.d("FIRESTORE READ", order.getDetails() + order.getNumber() + order.getPrice());
                 });
-        return new Order(randString(), details, total);
     }
 
     // Генерация случайной строки для номера заказа

@@ -11,11 +11,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -27,12 +30,16 @@ import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.firestore.SetOptions;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 
 public class FragmentShop extends Fragment {
@@ -157,6 +164,17 @@ public class FragmentShop extends Fragment {
                         .addOnSuccessListener(documentReference -> Toast.makeText(getContext(), "Product was added to the cart!", Toast.LENGTH_SHORT).show());
             };
 
+            // Поиск по товарам
+            EditText searchEt = v.findViewById(R.id.search_product_et);
+            searchEt.setText("");
+            ImageButton search = v.findViewById(R.id.search_button);
+            search.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    //searchProduct(searchEt.getText().toString());
+                }
+            });
+
             adapter = new ProductAdapter(context, mProducts, productClickListener, productBuyListener, productLikeListener);
             rv.setAdapter(adapter);
 
@@ -236,5 +254,31 @@ public class FragmentShop extends Fragment {
                         Log.d(TAG_ERROR, "get failed with ", task.getException());
                     }
                 });
+    }
+
+    private void searchProduct(String searchWord){
+        CollectionReference crp = db.collection("products");
+        if(!searchWord.equals("")){
+            String[] searchWors = searchWord.split(" ");
+            mProducts.clear();
+            mIndexes.clear();
+            crp
+                    .whereArrayContains("name", searchWord)
+                    .addSnapshotListener((value, error) -> {
+
+                        if(error!=null){
+                            Log.e("FIREBASE ERROR", error.getMessage());
+                        }
+                        assert value != null;
+                        for (QueryDocumentSnapshot doc : value){
+                            mProducts.add(doc.toObject(Product.class));
+                            mIndexes.add(doc.getId());
+                        }
+                        adapter.notifyDataSetChanged();
+                    });
+        }
+        else{
+            eventChangeListener();
+        }
     }
 }

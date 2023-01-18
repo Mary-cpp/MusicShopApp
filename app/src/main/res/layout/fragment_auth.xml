@@ -116,7 +116,7 @@
             style="@style/signIn_with_google"
             android:layout_marginTop="15dp"
             android:text="@string/google"
-            app:icon="@drawable/search"
+            app:icon="@drawable/search_lupa"
             app:iconSize="25dp"
             app:iconTintMode="multiply"
             app:layout_constraintEnd_toEndOf="@id/auth_signIn"

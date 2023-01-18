@@ -17,10 +17,16 @@
             android:scaleType="fitXY"
             android:src="@drawable/back_shop"/>
 
-        <TextView
-            style="@style/headers_style_light"
-            android:layout_marginTop="20dp"
-            android:text="@string/shop"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/headers_style_light"
+                android:layout_marginTop="20dp"
+                android:text="@string/shop"/>
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -29,22 +35,42 @@
             android:layout_marginBottom="20dp"
             android:orientation="horizontal">
 
-            <Spinner
-                android:id="@+id/spinner"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/search_product"
+                style="@style/editText"
                 android:layout_marginStart="30dp"
-                android:layout_width="250dp"
-                android:layout_height="40dp"/>
+                android:layout_marginTop="100dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/search_product_et"
+                    android:layout_width="200dp"
+                    android:layout_height="55dp"
+                    android:backgroundTint="@color/milky"
+                    android:fontFamily="@font/sen_regular"
+                    android:inputType="text"
+                    android:text="@string/search"
+                    android:textColor="@color/grey" />
+            </com.google.android.material.textfield.TextInputLayout>
 
             <ImageButton
-                android:id="@+id/shop_filter_button"
-                android:layout_width="60dp"
-                android:layout_height="53dp"
-                android:layout_gravity="bottom|end"
-                android:layout_marginStart="20dp"
-                android:backgroundTint="#00FFFFFF"
-                android:scaleType="fitXY"
-                android:src="@drawable/filter" />
+                android:visibility="visible"
+                android:id="@+id/search_button"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="15dp"
+                android:layout_gravity="bottom"
+                android:src="@drawable/search_lupa"
+                android:scaleType="fitCenter"
+                android:backgroundTint="#00FFFFFF"/>
 
+            <Spinner
+                android:id="@+id/spinner"
+                android:layout_gravity="bottom|end"
+                android:layout_marginStart="10dp"
+                android:layout_marginBottom="2dp"
+                android:layout_marginEnd="10dp"
+                android:layout_width="50dp"
+                android:layout_height="40dp" />
         </LinearLayout>
     </FrameLayout>
 
