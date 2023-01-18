@@ -171,7 +171,7 @@ public class FragmentShop extends Fragment {
             search.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    //searchProduct(searchEt.getText().toString());
+                    searchProduct(searchEt.getText().toString());
                 }
             });
 
@@ -263,7 +263,7 @@ public class FragmentShop extends Fragment {
             mProducts.clear();
             mIndexes.clear();
             crp
-                    .whereArrayContains("name", searchWord)
+                    .whereEqualTo("name", searchWord)
                     .addSnapshotListener((value, error) -> {
 
                         if(error!=null){
