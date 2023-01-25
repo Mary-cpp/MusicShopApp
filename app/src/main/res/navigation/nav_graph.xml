@@ -8,7 +8,7 @@
 
     <fragment
         android:id="@+id/fragmentAuth"
-        android:name="com.example.myapp.FragmentAuth"
+        android:name="com.example.myapp.view.FragmentAuth"
         android:label="fragment_auth"
         tools:layout="@layout/fragment_auth" >
         <action
@@ -20,7 +20,7 @@
     </fragment>
     <fragment
         android:id="@+id/fragmentReg"
-        android:name="com.example.myapp.FragmentReg"
+        android:name="com.example.myapp.view.FragmentReg"
         android:label="fragment_reg"
         tools:layout="@layout/fragment_reg" >
         <action
@@ -32,7 +32,7 @@
     </fragment>
     <fragment
         android:id="@+id/fragmentHome"
-        android:name="com.example.myapp.FragmentHome"
+        android:name="com.example.myapp.view.FragmentHome"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" >
         <action
@@ -56,7 +56,7 @@
     </fragment>
     <fragment
         android:id="@+id/fragmentShop"
-        android:name="com.example.myapp.FragmentShop"
+        android:name="com.example.myapp.view.FragmentShop"
         android:label="fragment_shop"
         tools:layout="@layout/fragment_shop" >
         <action
@@ -65,7 +65,7 @@
     </fragment>
     <fragment
         android:id="@+id/fragmentCart"
-        android:name="com.example.myapp.FragmentCart"
+        android:name="com.example.myapp.view.FragmentCart"
         android:label="fragment_cart"
         tools:layout="@layout/fragment_cart" >
         <action
@@ -74,7 +74,7 @@
     </fragment>
     <fragment
         android:id="@+id/fragmentProfile"
-        android:name="com.example.myapp.FragmentProfile"
+        android:name="com.example.myapp.view.FragmentProfile"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" >
         <action
@@ -83,7 +83,7 @@
     </fragment>
     <fragment
         android:id="@+id/fragmentNewPost"
-        android:name="com.example.myapp.FragmentNewPost"
+        android:name="com.example.myapp.view.FragmentNewPost"
         android:label="fragment_new_post"
         tools:layout="@layout/fragment_new_post" />
     <activity
@@ -92,7 +92,7 @@
         android:label="SplashActivity" />
     <fragment
         android:id="@+id/fragmentPost"
-        android:name="com.example.myapp.FragmentPost"
+        android:name="com.example.myapp.view.FragmentPost"
         android:label="fragment_post"
         tools:layout="@layout/fragment_post" >
         <action
@@ -101,12 +101,12 @@
     </fragment>
     <fragment
         android:id="@+id/fragmentProduct"
-        android:name="com.example.myapp.FragmentProduct"
+        android:name="com.example.myapp.view.FragmentProduct"
         android:label="fragment_product"
         tools:layout="@layout/fragment_product" />
     <fragment
         android:id="@+id/fragmentOrders"
-        android:name="com.example.myapp.FragmentOrders"
+        android:name="com.example.myapp.view.FragmentOrders"
         android:label="fragment_order"
         tools:layout="@layout/fragment_order" />
 </navigation>

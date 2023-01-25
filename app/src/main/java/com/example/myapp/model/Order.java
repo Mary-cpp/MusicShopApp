@@ -1,10 +1,9 @@
-package com.example.myapp;
+package com.example.myapp.model;
 
 import android.os.Parcel;
 import android.os.Parcelable;
 
 import java.util.HashMap;
-import java.util.List;
 
 public class Order implements Parcelable{
 
