@@ -13,6 +13,15 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.splash_activity);
 
+        waitForSplash();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+    }
+
+    private void waitForSplash(){
         Thread thread = new Thread(() -> {
             try {
                 Thread.sleep(2450);
@@ -23,10 +32,5 @@ public class SplashActivity extends AppCompatActivity {
             }
         });
         thread.start();
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
     }
 }
