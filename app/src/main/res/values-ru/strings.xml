@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">MUSEum</string>
+    <string name="login">Войти</string>
+    <string name="SignIn">Зарегистрироваться</string>
+    <string name="confirm">Подтвердить</string>
+    <string name="google">Войти с Google</string>
+    <string name="question">Еще нет аккаунта?</string>
+    <string name="email">Почта</string>
+    <string name="search">Поиск</string>
+    <string name="password">Пароль</string>
+    <string name="name">Имя</string>
+    <string name="or">ИЛИ</string>
+    <string name="password_repeat">Повторите пароль</string>
+    <string name="welcome">Добро пожаловать!</string>
+    <string name="welcome1">Давайте познакомимся...</string>
+    <string name="home_subtitle">Новые записи, гайды и отзывы из нашего сообщества вы можете увидеть здесь!</string>
+    <string name="add">Добавить запись</string>
+    <string name="new_post_subtitle">Есть чем поделиться с сообществом?</string>
+    <string name="upload_image">Загрузить изображение</string>
+    <string name="post_author_text">Некоторый автор</string>
+    <string name="post_date">Дата публикации</string>
+    <string name="remember_me">Запомнить меня</string>
+    <string name="leave_account">Выйти из аккаунта</string>
+    <string name="next">Далее</string>
+    <string name="previous">Предыдущий</string>
+    <string name="shop">Магазин</string>
+    <string name="profile">Профиль</string>
+    <string name="orders">Мои заказы</string>
+    <string name="cart">Моя корзина</string>
+    <string name="home">Главная</string>
+    <string name="new_post">Новая запись</string>
+</resources>

@@ -32,11 +32,8 @@
         <TextView
             style="@style/headers_style_light"
             android:text="@string/cart"/>
-
-
-
-
     </FrameLayout>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/cart_list"
         android:layout_marginTop="10dp"

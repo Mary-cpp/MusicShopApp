@@ -139,7 +139,7 @@
         android:textColor="@color/light_brown"
         android:fontFamily="@font/sen_regular"
         app:layout_constraintTop_toBottomOf="@+id/reg_signIn"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="20dp"
         app:layout_constraintStart_toStartOf="@id/reg_signIn"
         app:layout_constraintEnd_toEndOf="@+id/reg_signIn"/>
 
@@ -148,7 +148,7 @@
         android:id="@+id/reg_signIn_google"
         android:layout_width="300dp"
         android:layout_height="60dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="20dp"
         android:backgroundTint="@color/white"
         app:icon="@drawable/search_lupa"
         app:iconSize="25dp"

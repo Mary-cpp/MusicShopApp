@@ -1,5 +1,13 @@
 <resources>
     <string name="app_name">MUSEum</string>
+    <!-- Pages names -->
+    <string name="shop">Shop</string>
+    <string name="profile">Profile</string>
+    <string name="orders">Orders</string>
+    <string name="cart">Cart</string>
+    <string name="home">Home</string>
+    <string name="new_post">New post</string>
+    <!-- Placeholders -->
     <string name="login">Log in</string>
     <string name="SignIn">Sign in</string>
     <string name="confirm">confirm</string>
@@ -13,34 +21,26 @@
     <string name="password_repeat">Repeat Password</string>
     <string name="welcome">Welcome!</string>
     <string name="welcome1">Let\'s get acquainted…</string>
-    <string name="home">Home</string>
     <string name="home_subtitle">New posts, guides and feedbacks from our community are gathered here…</string>
-    <string name="shop">Shop</string>
-    <string name="profile">Profile</string>
-    <string name="orders">Orders</string>
-    <string name="cart">Cart</string>
     <string name="add">Add post</string>
-    <string name="new_post">New post</string>
     <string name="new_post_subtitle">Have something to share with the community?</string>
-    <string name="dummy_button">Dummy Button</string>
-    <string name="dummy_content">DUMMY\nCONTENT</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="dummy_button" translatable="false">Dummy Button</string>
+    <string name="dummy_content" translatable="false">DUMMY\nCONTENT</string>
+    <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
     <string name="upload_image">upload image</string>
     <string name="post_author_text">Some post author</string>
     <string name="post_date">Post date</string>
     <string name="remember_me">Remember me</string>
     <string name="leave_account">Leave account</string>
-    <string name="defProduct">Product1</string>
-    <string name="defProductPrice">Price1</string>
-    <string name="defProductDescription">Description1</string>
-    <string name="title_activity_main2">MainActivity2</string>
+    <string name="defProduct" translatable="false">Product1</string>
+    <string name="defProductPrice" translatable="false">Price1</string>
+    <string name="defProductDescription" translatable="false">Description1</string>
+    <string name="title_activity_main2" translatable="false">MainActivity2</string>
     <!-- Strings used for fragments for navigation -->
-    <string name="first_fragment_label">First Fragment</string>
-    <string name="second_fragment_label">Second Fragment</string>
+    <string name="first_fragment_label" translatable="false">First Fragment</string>
+    <string name="second_fragment_label" translatable="false">Second Fragment</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
-
-    <string name="hello_first_fragment">Hello first fragment</string>
-    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="hello_first_fragment" translatable="false">Hello first fragment</string>
+    <string name="hello_second_fragment" translatable="false">Hello second fragment. Arg: %1$s</string>
 </resources>
